@@ -166,7 +166,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
-    - _FilmSensitivity: 0.5
+    - _FilmSensitivity: 10
     - _GreenSensitivity: 0.587
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5

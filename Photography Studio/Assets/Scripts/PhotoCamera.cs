@@ -6,9 +6,9 @@ public class PhotoCamera : MonoBehaviour
 {
 
     public CustomRenderTexture PhotoCameraTexture;
-    public Camera photoCamera;
+    public Camera mainCamera;
     public Camera viewFinderCamera;
-    private Camera mainCamera;
+    public Camera photoCamera;
     private bool isUsingPhotoCamera = false;
     private bool isShutterOpen = false;
 
@@ -28,7 +28,6 @@ public class PhotoCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = Camera.main;
         mainCamera.enabled = true;
         viewFinderCamera.enabled = false;
         photoCamera.enabled = false;
@@ -37,50 +36,54 @@ public class PhotoCamera : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (isUsingPhotoCamera)
-            {
-                mainCamera.enabled = true;
-                viewFinderCamera.enabled = false;
-                isUsingPhotoCamera = false;
-            }
-            else
-            {
-                mainCamera.enabled = false;
-                viewFinderCamera.enabled = true;
-                isUsingPhotoCamera = true;
-            }
-        }
+
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
+        if (isShutterOpen)
+        {
+            photoCamera.Render();
+            PhotoCameraTexture.Update();
+        }
+    }
+
+    public void PressShutter()
+    {
         if (isUsingPhotoCamera)
         {
-
-            if (Input.GetButtonDown("Fire1"))
-            {
-                PhotoCameraTexture.Initialize();
-                viewFinderCamera.enabled = false;
-                isShutterOpen = true;
-            }
-
-            if (Input.GetButton("Fire1"))
-            {
-                photoCamera.Render();
-                PhotoCameraTexture.Update();
-            }
-
-            if (Input.GetButtonUp("Fire1"))
-            {
-
-                viewFinderCamera.enabled = true;
-                isShutterOpen = false;
-            }
+            PhotoCameraTexture.Initialize();
+            viewFinderCamera.enabled = false;
+            isShutterOpen = true;
         }
+        
+    }
 
+    public void ReleaseShutter()
+    {
+        if (isUsingPhotoCamera)
+        {
+            isShutterOpen = false;
+            viewFinderCamera.enabled = true;
+        }
+        
+    }
+
+    public void ToggleCameraAim()
+    {
+        if (isUsingPhotoCamera)
+        {
+            mainCamera.enabled = true;
+            viewFinderCamera.enabled = false;
+            isUsingPhotoCamera = false;
+        }
+        else
+        {
+            mainCamera.enabled = false;
+            viewFinderCamera.enabled = true;
+            isUsingPhotoCamera = true;
+        }
     }
 
 }

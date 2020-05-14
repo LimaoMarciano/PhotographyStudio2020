@@ -408,6 +408,33 @@ MonoBehaviour:
   mainCamera: {fileID: 8098102804552348696}
   viewFinderCamera: {fileID: 8098102803062014955}
   photoCamera: {fileID: 8098102803184953959}
+  zoomSensitivity: 1
+  minFocalLenght: 20
+  maxFocalLenght: 100
+  apertures:
+  - 1.4
+  - 2
+  - 2.8
+  - 4
+  - 5.6
+  - 8
+  - 11
+  - 16
+  - 22
+  - 32
+  shutterSpeeds:
+  - 2
+  - 1
+  - 0.5
+  - 0.25
+  - 0.125
+  - 0.067
+  - 0.034
+  - 0.017
+  - 0.008
+  - 0.004
+  - 0.002
+  - 0.001
 --- !u!1 &8098102803972160885
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,15 +574,48 @@ MonoBehaviour:
     m_ActionId: 5d48f635-1ac4-4821-b30e-cfc7bc0e6de7
     m_ActionName: Gameplay/AimCamera[/XInputControllerWindows/leftShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnIncreaseZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_ActionId: ba19244b-0629-4e21-a58f-16c7e1cd1438
     m_ActionName: Gameplay/ZoomIn[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnDecreaseZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_ActionId: 3ce91422-1235-427b-a65a-f9bbb7f6d801
     m_ActionName: Gameplay/ZoomOut[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7251a253-e083-4ed9-826f-ce1a441ccfaa
     m_ActionName: Gameplay/Zoom
   - m_PersistentCalls:
@@ -598,6 +658,66 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 71a68106-5c6f-4575-8e0f-faa57c569b3a
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnIncreaseAperture
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 241c54b3-3265-44ef-9716-f6710fbcc87a
+    m_ActionName: Gameplay/IncreaseAperture[/XInputControllerWindows/dpad/up,/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnDecreaseAperture
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7b666197-2611-4553-9599-55eccf1a62e6
+    m_ActionName: Gameplay/DecreaseAperture[/XInputControllerWindows/dpad/down,/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnIncreaseShutterSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48e2683f-c1e0-4fc1-8e0e-1f2cb80177b9
+    m_ActionName: Gameplay/IncreaseShutterSpeed[/XInputControllerWindows/dpad/right,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8098102803972160884}
+        m_MethodName: OnDecreaseShutterSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9b215f68-c68c-4327-909a-3993262a45a3
+    m_ActionName: Gameplay/DecreaseShutterSpeed[/XInputControllerWindows/dpad/left,/Keyboard/x]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Gameplay

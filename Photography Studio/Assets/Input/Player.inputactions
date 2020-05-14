@@ -39,25 +39,57 @@
                 },
                 {
                     "name": "ZoomIn",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ba19244b-0629-4e21-a58f-16c7e1cd1438",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "ZoomOut",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "3ce91422-1235-427b-a65a-f9bbb7f6d801",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Zoom",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "7251a253-e083-4ed9-826f-ce1a441ccfaa",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "IncreaseAperture",
+                    "type": "Button",
+                    "id": "241c54b3-3265-44ef-9716-f6710fbcc87a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreaseAperture",
+                    "type": "Button",
+                    "id": "7b666197-2611-4553-9599-55eccf1a62e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "IncreaseShutterSpeed",
+                    "type": "Button",
+                    "id": "48e2683f-c1e0-4fc1-8e0e-1f2cb80177b9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DecreaseShutterSpeed",
+                    "type": "Button",
+                    "id": "9b215f68-c68c-4327-909a-3993262a45a3",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -211,7 +243,7 @@
                     "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
                     "path": "<Pointer>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "groups": ";Keyboard&Mouse;Touch",
                     "action": "Look",
                     "isComposite": false,
@@ -328,13 +360,167 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "1D Axis",
+                    "id": "ec5e0ca3-39d9-436c-8c55-9d8ea6ee5335",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomOut",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "cdf6b0d8-75c0-4e1c-a964-a1fc1ca532e3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomOut",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "0450c482-3e2d-47cb-b957-b3a08d978cac",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomOut",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "13b5a66f-ab00-4ea3-904b-6f0293ac5cdb",
-                    "path": "<Mouse>/scroll",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Gamepad Trigger",
+                    "id": "5f129801-02e0-47fd-9c53-2e3ecb498d73",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1b02841e-c57f-4dee-9f88-28d8a7ce3134",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "8b9587df-494b-4940-bdb5-7cf952e31285",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d1ad1962-ff57-4e61-8e5c-e8fb627c400b",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseAperture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6730c82a-af0a-4bbd-8991-4801e055aa1a",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Zoom",
+                    "action": "IncreaseAperture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "727aa16c-8fed-4f84-9b12-48521071ef87",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseAperture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d66661df-6d27-4f80-b50b-7dda02315bb7",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DecreaseAperture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "600ad82f-595f-45a0-8d00-5c4b733680d3",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseShutterSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b4c34f1-3298-4f1c-99df-bb2202d02cd7",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "IncreaseShutterSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af7a4aba-bb36-4bc9-b487-27bd98589752",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseShutterSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c92e7052-ccc1-4e1e-bf6b-6095f7cc2e0b",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "DecreaseShutterSpeed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

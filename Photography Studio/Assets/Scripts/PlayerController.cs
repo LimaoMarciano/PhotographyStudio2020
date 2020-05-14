@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput = Vector2.zero;
     private Vector2 lookInput = Vector2.zero;
     private Vector3 velocity = Vector3.zero;
+
+    private float zoomInput = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
         velocity = (controller.transform.right * moveSpeed * moveInput.x) + (controller.transform.forward * moveSpeed * moveInput.y);
         controller.SimpleMove(velocity * Time.deltaTime);
 
+        photoCamera.ZoomAnalogInput(zoomInput);
+        Debug.Log(zoomInput);
 
     }
 
@@ -74,6 +78,56 @@ public class PlayerController : MonoBehaviour
         {
             photoCamera.ReleaseShutter();
         }
+    }
+
+    public void OnIncreaseAperture(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            photoCamera.IncreaseAperture();
+        }
+    }
+
+    public void OnDecreaseAperture(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            photoCamera.DecreaseAperture();
+        }
+    }
+
+    public void OnIncreaseShutterSpeed(InputAction.CallbackContext context)
+    {
+
+        if (context.performed)
+        {
+            photoCamera.IncreaseShutterSpeed();
+        }
+    }
+
+    public void OnDecreaseShutterSpeed(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            photoCamera.DecreaseShutterSpeed();
+        }
+    }
+
+    public void OnIncreaseZoom (InputAction.CallbackContext context)
+    {
+        float input = context.ReadValue<float>();
+        photoCamera.IncreaseZoom(input);
+    }
+
+    public void OnDecreaseZoom(InputAction.CallbackContext context)
+    {
+        float input = context.ReadValue<float>();
+        photoCamera.DecreaseZoom(input);
+    }
+
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        zoomInput = context.ReadValue<float>();
     }
 
     private Quaternion ClampRotationAroundXAxis(Quaternion q)
